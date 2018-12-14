@@ -13,4 +13,9 @@ public class Source : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void shoot()
+    {
+        Debug.Log("Source shot");
+    }
 }
