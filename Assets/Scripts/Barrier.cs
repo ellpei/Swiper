@@ -30,7 +30,9 @@ public class Barrier : MonoBehaviour {
         //change the length of the barrier 
         transform.localScale = new Vector3(100*endPos.x, transform.localScale.y, 1);
         //change the rotation of the barrier 
-        transform.RotateAround(startPos, Mathf.Tan(Mathf.Abs(startPos.y-endPos.y) / Mathf.Abs(startPos.x - endPos.x)));
+        float diffy = Mathf.Abs(transform.position.y - endPos.y);
+        float diffx = Mathf.Abs(transform.position.x - endPos.x);
+        transform.RotateAround(startPos, Mathf.Tan(diffy/diffx));
     }
 
     public void changeLength(int len)

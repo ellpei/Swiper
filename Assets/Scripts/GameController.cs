@@ -12,9 +12,6 @@ public class GameController : MonoBehaviour {
     public GameObject barrier;
     public int points = 0;
     public int lives = 5;
-    bool mouseDrag = false;
-
-    
 
 
     // Use this for initialization
@@ -39,25 +36,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        //user is currently drawing a barrier 
-        if(mouseDrag)
-        {
-            barriers.Last.Value.GetComponent<Barrier>().setEndPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
 		
 	}
-
-    private void createBarrier()
-    {
-        Debug.Log("createBarrier");
-        Vector3 startPos = Input.mousePosition;
-        mouseDrag = true;
-        GameObject newBarrier = Instantiate(barrier, gameObject.transform);
-        barriers.AddLast(newBarrier);
-        newBarrier.GetComponent<Barrier>().setStartPosition(Camera.main.ScreenToWorldPoint(startPos));
-        newBarrier.GetComponent<Barrier>().setEndPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-    }
 
     //Make the target release an item 
     private void shoot()
@@ -65,20 +45,9 @@ public class GameController : MonoBehaviour {
         target.GetComponent<Source>().shoot(); 
     }
 
-    public void OnMouseDown()
+    public void AddBarrier(GameObject barr)
     {
-        createBarrier();
+        barriers.AddLast(barr);
     }
 
-    public void OnMouseUp()
-    {
-        mouseDrag = false;
-    }
-
-    /*
-    public void OnMouseDrag()
-    {
-        Debug.Log("mouse drag");
-    }
-    */
 }
