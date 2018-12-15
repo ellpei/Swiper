@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Controls the behavior of the source (aka. cannon) */
+
 public class Source : MonoBehaviour {
 
 	// Use this for initialization

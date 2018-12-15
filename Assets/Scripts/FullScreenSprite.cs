@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Fits the background to the camera*/
+
 public class FullScreenSprite : MonoBehaviour {
 
     private void Awake()

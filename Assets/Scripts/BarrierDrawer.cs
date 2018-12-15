@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Allows user to draw barriers with the mouse */
+
 [RequireComponent(typeof(Camera))]
 public class BarrierDrawer : MonoBehaviour {
 
@@ -11,7 +13,8 @@ public class BarrierDrawer : MonoBehaviour {
     public float depth = -5;
     bool mouseDrag = false;
     GameObject currentBarrier;
-    CapsuleCollider capsule; 
+    CapsuleCollider capsule;
+    public long barrierLifeTime = 5;
 
     GameController controller; 
 
@@ -28,8 +31,6 @@ public class BarrierDrawer : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-
-            Debug.Log("Start");
             lineStartPoint = GetMouseCameraPoint();
             mouseDrag = true;
 
@@ -40,6 +41,9 @@ public class BarrierDrawer : MonoBehaviour {
 
             lineEndPoint = GetMouseCameraPoint();
             currentBarrier = new GameObject();
+
+            Barrier barScript = currentBarrier.AddComponent<Barrier>();
+            barScript.SetLifeLength(barrierLifeTime);
 
             //make a linerenderer
             var lineRenderer = currentBarrier.AddComponent<LineRenderer>();
@@ -59,7 +63,7 @@ public class BarrierDrawer : MonoBehaviour {
 
         } else if (Input.GetMouseButtonUp(0))
         {
-
+            currentBarrier.GetComponent<Barrier>().SetLifeLength(barrierLifeTime);
             currentBarrier = null;
             lineStartPoint = null;
             lineEndPoint = Vector3.zero;
