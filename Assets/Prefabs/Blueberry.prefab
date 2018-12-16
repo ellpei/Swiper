@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4504934612888098}
   - component: {fileID: 212680615581418178}
   - component: {fileID: 114154078403087192}
-  - component: {fileID: 50115161185601528}
-  - component: {fileID: 58892155885803220}
+  - component: {fileID: 135513913764566098}
+  - component: {fileID: 54668859989294964}
   m_Layer: 0
   m_Name: blueberry
   m_TagString: projectile
@@ -37,47 +37,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982244327225076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.88, y: 2.03, z: -5.53}
-  m_LocalScale: {x: 0.349, y: 0.313, z: 1}
+  m_LocalPosition: {x: -6.57, y: 1.93, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50115161185601528
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!54 &54668859989294964
+Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982244327225076}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58892155885803220
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982244327225076}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9049999
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 56
+  m_CollisionDetection: 0
 --- !u!114 &114154078403087192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,6 +69,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee7ef09da9266246ad1c1135a839c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135513913764566098
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982244327225076}
+  m_Material: {fileID: 13400000, guid: b1f5617aff3bc9a47896c714895a3eb2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.21753931
+  m_Center: {x: -0.0129413605, y: 0.003146559, z: 0.04379344}
 --- !u!212 &212680615581418178
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +116,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8c9956fd24fad0d4b868d79276c2c6ae, type: 3}
+  m_Sprite: {fileID: 21300002, guid: c712134d22ad4104d84d6849d1b058bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
