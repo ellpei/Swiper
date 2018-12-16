@@ -12,6 +12,7 @@ public class BarrierDrawer : MonoBehaviour {
     public float lineWidth;
     public float depth = -5;
     bool mouseDrag = false;
+    float createTime = 0; 
     GameObject currentBarrier;
     CapsuleCollider capsule;
     public long barrierLifeTime = 5;
@@ -59,15 +60,21 @@ public class BarrierDrawer : MonoBehaviour {
             capsule.direction = 2;
 
             controller.AddBarrier(currentBarrier);
+            createTime = Time.time; 
 
-
-        } else if (Input.GetMouseButtonUp(0))
+        } else if (Input.GetMouseButtonUp(0) && currentBarrier != null)
         {
             currentBarrier.GetComponent<Barrier>().SetLifeLength(barrierLifeTime);
             currentBarrier = null;
             lineStartPoint = null;
             lineEndPoint = Vector3.zero;
             mouseDrag = false;
+
+        } else if(mouseDrag && Time.time - createTime > barrierLifeTime)
+        {
+            mouseDrag = false;
+            createTime = 0;
+            currentBarrier = null; 
 
         } else if (mouseDrag && GetMouseCameraPoint() != lineEndPoint)
         {

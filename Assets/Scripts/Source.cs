@@ -29,7 +29,7 @@ public class Source : MonoBehaviour {
     public void shoot()
     {
         Debug.Log("Source shot");
-        GameObject item = Instantiate(blueberry, transform);
+        GameObject item = Instantiate(blueberry);
         item.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
         item.GetComponent<Rigidbody>().AddForce(firedirection*300);
     }

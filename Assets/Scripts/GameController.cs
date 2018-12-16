@@ -50,4 +50,8 @@ public class GameController : MonoBehaviour {
         barriers.AddLast(barr);
     }
 
+    public void AddPoint()
+    {
+        points++;
+    }
 }
