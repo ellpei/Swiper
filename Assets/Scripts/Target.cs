@@ -17,7 +17,7 @@ public class Target : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("register collsion");
         if(collision.gameObject.tag == "projectile")

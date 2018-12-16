@@ -9,7 +9,6 @@ public class Item : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         cameraRef = Camera.main;
-        transform.position = new Vector3(transform.position.x, transform.position.y, -5);
 	}
 	
 	// Update is called once per frame
