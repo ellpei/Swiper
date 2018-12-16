@@ -9,7 +9,7 @@ public class BarrierDrawer : MonoBehaviour {
 
     private new Camera camera;
     public Material lineMaterial;
-    public float lineWidth;
+    float lineWidth = 0.05f;
     public float depth = -5;
     bool mouseDrag = false;
     float createTime = 0; 
