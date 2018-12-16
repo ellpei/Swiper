@@ -25,11 +25,11 @@ public class BarrierDrawer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         camera = GetComponent<Camera>();
-        controller = transform.GetChild(0).GetComponent<GameController>(); 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        controller = GameObject.Find("controller").GetComponent<GameController>();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetMouseButtonDown(0))
         {
             lineStartPoint = GetMouseCameraPoint();
