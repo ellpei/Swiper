@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour {
 
     GameObject mainMenuBtn;
 
-    public int timeCountDown = 40; //time left until lvl ends in seconds
+    public int timeCountDown = 30; //time left until lvl ends in seconds
     float timer;
     string timeString = "Time left: ";
 
@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour {
             timeText.text = timeString + timeCountDown;
             timer = 0;
         }
-        if(timeCountDown <= 0 && !gameOver)
+        if(timeCountDown <= 0)
         {
             if(controller.PassedLevel(score))
             {
@@ -123,6 +123,16 @@ public class UIManager : MonoBehaviour {
                 }
             }
         }
+        Text text = gameInfo.GetComponent<Text>();
+        text.text = "High score \n";
+        //show highScores 
+        for(int i = 0; i < highScores.Length; i++)
+        {
+            if(highScores[i] != "")
+            {
+                text.text += (i + 1) + " " + highScores[i] + "\n";
+            }
+        }
 
         saveData.highScores = highScores;
         saveData.WriteToFile();
@@ -137,7 +147,11 @@ public class UIManager : MonoBehaviour {
         pausedText.GetComponent<Text>().text = "Game Over :(";
 
         gameInfo.SetActive(true);
-        playerName.SetActive(true);
+        if(playerName != null)
+        {
+            playerName.SetActive(true);
+
+        }
 
         mainMenuBtn.SetActive(true);
     }
