@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/*Script for creating moving obstacles*/
+/*Script for creating moving obstacles, moves up and down between the bounds of the camera*/
 public class MovingObstacle : MonoBehaviour {
 
     public float lowerBound;

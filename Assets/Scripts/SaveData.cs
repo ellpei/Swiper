@@ -35,7 +35,6 @@ public class SaveData {
     public void WriteToFile()
     {
         Debug.Log("wrote to file");
-        highScores[0] = "test 100";
         string json = JsonUtility.ToJson(this);
 
         File.WriteAllText(filepath, json);
