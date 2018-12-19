@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour {
     public int score = 0;
     public int lives = 5;
     Text scoreText;
+    int timeCountDown; //time left until lvl ends
+    float startTime; 
 
     // Use this for initialization
     void Start () {
@@ -24,6 +26,8 @@ public class UIManager : MonoBehaviour {
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("showOnPause");
         hidePaused();
+
+        startTime = Time.time;
 	}
 	
 	// Update is called once per frame

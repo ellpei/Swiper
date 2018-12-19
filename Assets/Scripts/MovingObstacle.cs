@@ -14,8 +14,8 @@ public class MovingObstacle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        lowerBound = -Camera.main.orthographicSize;
-        upperBound = Camera.main.orthographicSize;
+        lowerBound = -Camera.main.orthographicSize + gameObject.GetComponent<BoxCollider>().size.x;
+        upperBound = Camera.main.orthographicSize - gameObject.GetComponent<BoxCollider>().size.x;
         transform.position = new Vector3(transform.position.x, transform.position.y, -5);
 
 	}
