@@ -9,11 +9,10 @@ public class GameController : MonoBehaviour {
 
     public GameObject target;
     public GameObject barrier;
-    int lvl;
+    public int lvl;
+    public int pointsNeeded;
 
     private SaveData saveData = new SaveData();
-
-
 
     // Use this for initialization
     void Awake() {
@@ -22,13 +21,23 @@ public class GameController : MonoBehaviour {
         target = GameObject.Find("Target");
 
         lvl = (int) char.GetNumericValue(SceneManager.GetActiveScene().name[3]);
-
-        Debug.Log("level: " + lvl);
+        pointsNeeded = lvl * 10;
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public bool PassedLevel(int points)
+    {
+        if(pointsNeeded < points)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
 
 }

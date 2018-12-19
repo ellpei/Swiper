@@ -78,7 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  source: {fileID: 0}
   barrier: {fileID: 0}
-  points: 0
-  lives: 5
+  lvl: 0
+  pointsNeeded: 0

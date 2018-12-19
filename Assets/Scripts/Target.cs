@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
-    GameController controller;
     UIManager UIManager;
 
 	// Use this for initialization
 	void Start () {
 
-        controller = GameObject.Find("controller").GetComponent<GameController>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
 	}
 	
