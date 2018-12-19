@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
-    GameController controller; 
+    GameController controller;
+    UIManager UIManager;
 
 	// Use this for initialization
 	void Start () {
 
         controller = GameObject.Find("controller").GetComponent<GameController>();
+        UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
 	}
 	
 	// Update is called once per frame
@@ -19,11 +21,10 @@ public class Target : MonoBehaviour {
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("register collsion");
         if(collision.gameObject.tag == "projectile")
         {
             Debug.Log("hit target");
-            controller.AddPoint();
+            UIManager.AddScore();
         }
     }
 }

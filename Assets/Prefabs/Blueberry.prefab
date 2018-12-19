@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4504934612888098}
   - component: {fileID: 212680615581418178}
   - component: {fileID: 114154078403087192}
-  - component: {fileID: 135513913764566098}
-  - component: {fileID: 54668859989294964}
+  - component: {fileID: 54910384223375102}
+  - component: {fileID: 65874715112290508}
   m_Layer: 0
   m_Name: blueberry
   m_TagString: projectile
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54668859989294964
+--- !u!54 &54910384223375102
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,7 +57,19 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
+--- !u!65 &65874715112290508
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982244327225076}
+  m_Material: {fileID: 13400000, guid: b1f5617aff3bc9a47896c714895a3eb2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7060626, y: 2.5223734, z: 0.2}
+  m_Center: {x: -0.054215275, y: -0.24213256, z: 0}
 --- !u!114 &114154078403087192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,18 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee7ef09da9266246ad1c1135a839c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135513913764566098
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982244327225076}
-  m_Material: {fileID: 13400000, guid: b1f5617aff3bc9a47896c714895a3eb2, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.21753931
-  m_Center: {x: -0.0129413605, y: 0.003146559, z: 0.04379344}
 --- !u!212 &212680615581418178
 SpriteRenderer:
   m_ObjectHideFlags: 1

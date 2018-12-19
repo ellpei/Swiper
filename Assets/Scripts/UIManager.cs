@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class UIManager : MonoBehaviour {
 
     GameObject[] pauseObjects;
     SaveData saveData = new SaveData();
+    GameObject controller;
+    public int score = 0;
+    public int lives = 5;
+    Text scoreText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
+        scoreText = GameObject.Find("Score").GetComponent<Text>();
+        scoreText.text = "Score: " + score;
+        controller = GameObject.Find("controller");
+        saveData = saveData.ReadFromFile();
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("showOnPause");
         hidePaused();
@@ -42,6 +52,12 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void AddScore()
+    {
+        score++;
+        scoreText.text = "Score: " + score;
+    }
+
     public void Reload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -64,8 +80,13 @@ public class UIManager : MonoBehaviour {
     }
 
     //Loads inputted level 
-    public void LoadLevel(string level)
+    public void SaveAndQuit()
     {
-        SceneManager.LoadScene(level);
+       // GameController script = controller.GetComponent<GameController>();
+        saveData.lives = lives;
+        saveData.points = score;
+        saveData.lastlevel = SceneManager.GetActiveScene().name;
+        saveData.WriteToFile();
+        SceneManager.LoadScene("mainMenu");
     }
 }

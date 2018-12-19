@@ -25,7 +25,7 @@ public class BarrierDrawer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         camera = GetComponent<Camera>();
-        controller = GameObject.Find("controller").GetComponent<GameController>();
+        //controller = GameObject.Find("controller").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class BarrierDrawer : MonoBehaviour {
             capsule.center = Vector3.zero;
             capsule.direction = 2;
 
-            controller.AddBarrier(currentBarrier);
+            //controller.AddBarrier(currentBarrier);
             createTime = Time.time; 
 
         } else if (Input.GetMouseButtonUp(0) && currentBarrier != null)
