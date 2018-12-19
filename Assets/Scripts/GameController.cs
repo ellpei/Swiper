@@ -13,10 +13,13 @@ public class GameController : MonoBehaviour {
     public int points = 0;
     public int lives = 5;
 
+    private SaveData saveData = new SaveData();
+
 
     // Use this for initialization
     void Awake () {
 
+        saveData = saveData.ReadFromFile();
         //cover the canvas with the box collider in order to register mouse events 
         BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = Vector2.zero;

@@ -7,6 +7,8 @@ TagManager:
   - projectile
   - Target
   - barrier
+  - showOnPause
+  - lvlbtn
   layers:
   - Default
   - TransparentFX
