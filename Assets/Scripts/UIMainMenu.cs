@@ -48,16 +48,21 @@ public class UIMainMenu : MonoBehaviour {
 
     public void HighScores()
     {
+        saveData = saveData.ReadFromFile();
         highscores.enabled = true;
         hideButtonGroup(showOnPause);
-        List<string[]> scores = saveData.highScores;
         highscores = GameObject.Find("highscores").GetComponent<Text>();
         int num = 1;
         highscores.text = "High Scores: \n";
-        foreach(string[] str in scores)
+        foreach(string str in saveData.highScores)
         {
-            highscores.text += num + " " + str[0] + " " + str[1] + "\n";
-            num++;
+            Debug.Log(str);
+            if(str != "")
+            {
+                highscores.text += num + ". " + str + "\n";
+                num++;
+            }
+            
         }
     }
 

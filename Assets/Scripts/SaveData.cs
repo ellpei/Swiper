@@ -24,11 +24,10 @@ public class SaveData {
     public int health = DEFAULT_LIVES;
     public int lives = DEFAULT_LIVES;
     public List<PowerUp> powerUps = new List<PowerUp>();
-    public List<string[]> highScores = new List<string[]>();
+    public string[] highScores = new string[10];
     public string lastlevel = DEFAULT_LVL;
-    public int points = 0;
     const bool DEBUG_ON = true;
-
+    public int points = 0;
 
     private static string filepath = "Assets/saved";
 
@@ -36,7 +35,7 @@ public class SaveData {
     public void WriteToFile()
     {
         Debug.Log("wrote to file");
-        highScores.Add(new string[2]{ "player 1", points.ToString() });
+        highScores[0] = "test 100";
         string json = JsonUtility.ToJson(this);
 
         File.WriteAllText(filepath, json);
@@ -78,7 +77,6 @@ public class SaveData {
             lives == DEFAULT_LIVES &&
             lastlevel == DEFAULT_LVL &&
             points == DEFAULT_POINTS &&
-            highScores.Count == 0 &&
             powerUps.Count == 0);
     }
 
@@ -89,19 +87,14 @@ public class SaveData {
         {
             powerUpsStrings[i] = powerUps[i].ToString();
         }
-        string[] highScoreStrings = new string[highScores.Count];
-        for(int i = 0; i < highScores.Count; i++)
-        {
 
-            highScoreStrings[i] = highScores[i][0]+ " " + highScores[i][1];
-        }
         return string.Format(
             "coins: {0}\nhealth: {1}nlives: {2}\npowerUps: {3}highScores: {4}\nlastLevel: {5}",
             coins,
             health,
             lives,
             "[" + string.Join(",", powerUpsStrings) + "]",
-            "[" + string.Join(",", highScoreStrings) + "]",
+            "[" + string.Join(",", highScores) + "]",
             lastlevel);
     }
 }
