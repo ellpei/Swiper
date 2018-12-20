@@ -11,13 +11,29 @@ public class Source : MonoBehaviour {
     public GameObject blueberry;
     int shotsfired = 0;
     Vector3 firedirection = new Vector3(1, 1, 0);
+    bool rotating = false;
+    GameController controller;
+    Quaternion startrotation;
+    Quaternion maxrotation;
 
 	// Use this for initialization
 	void Start () {
+
+        startrotation = transform.rotation;
+        controller = GameObject.Find("controller").GetComponent<GameController>();
+        if(controller.lvl == 2)
+        {
+            rotating = true; 
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(rotating)
+        {
+
+        }
 
         timer += Time.deltaTime;
         if(timer >= timeBetweenShots) {

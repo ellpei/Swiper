@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour {
         {
             if(highScores[i] != "")
             {
-                text.text += (i + 1) + " " + highScores[i] + "\n";
+                text.text += (i + 1) + ". " + highScores[i] + "\n";
             }
         }
 
@@ -141,6 +141,7 @@ public class UIManager : MonoBehaviour {
     }
     void GameOver()
     {
+        Camera.main.GetComponent<BarrierDrawer>().enabled = false;
         pauseBtn.SetActive(false);
         Time.timeScale = 0;
         pausedText.SetActive(true);

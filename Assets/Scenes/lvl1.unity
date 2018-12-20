@@ -360,6 +360,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114621471309528148, guid: 4f519c30ffdbcaf49b98db46f4060bbf,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.09803922
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f519c30ffdbcaf49b98db46f4060bbf, type: 2}
   m_IsPrefabAsset: 0

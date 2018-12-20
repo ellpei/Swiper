@@ -17,13 +17,24 @@ public class Item : MonoBehaviour {
         //destroy self if fallen out of camera range
         if (cameraRef.WorldToScreenPoint(transform.position).y < cameraRef.orthographicSize * 2)
         {
-            Destroy(gameObject);
+            StartCoroutine(DelayedDestruction(5));
         }
 	}
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("item registered collision");
+        if(other.gameObject.tag == "Target")
+        {
+            StartCoroutine(DelayedDestruction(5));
+        }
+    }
+
+    public IEnumerator DelayedDestruction(int seconds)
+    {
+        Destroy(gameObject.GetComponent<Renderer>());
+        Destroy(gameObject.GetComponent<Rigidbody>());
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
     }
 
 }

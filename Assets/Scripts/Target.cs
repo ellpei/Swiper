@@ -17,12 +17,12 @@ public class Target : MonoBehaviour {
 		
 	}
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "projectile")
+        if(other.gameObject.tag == "projectile")
         {
-            Debug.Log("hit target");
             UIManager.AddScore();
         }
     }
+
 }
