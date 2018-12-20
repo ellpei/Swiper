@@ -7,13 +7,13 @@ using UnityEngine;
 public class Source : MonoBehaviour {
 
     public int timeBetweenShots = 1; //seconds between shots 
+    bool rotating = false;
+
     float timer = 0; 
     public GameObject blueberry;
-    int shotsfired = 0;
     Vector3 firedirection;
     Transform nosslePos;
 
-    bool rotating = false;
     GameController controller;
 
     float maxrotationZ;
