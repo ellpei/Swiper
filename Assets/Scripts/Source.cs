@@ -10,29 +10,53 @@ public class Source : MonoBehaviour {
     float timer = 0; 
     public GameObject blueberry;
     int shotsfired = 0;
-    Vector3 firedirection = new Vector3(1, 1, 0);
+    Vector3 firedirection;
+    Transform nosslePos;
+
     bool rotating = false;
     GameController controller;
-    Quaternion startrotation;
-    Quaternion maxrotation;
+
+    float maxrotationZ;
+    float minrotationZ;
+    bool increasingRotation = false;
 
 	// Use this for initialization
 	void Start () {
 
-        startrotation = transform.rotation;
+        maxrotationZ = -0.38f;
+        minrotationZ = -0.92f;
+
         controller = GameObject.Find("controller").GetComponent<GameController>();
-        if(controller.lvl == 2)
+        nosslePos = GameObject.Find("Nossle").GetComponent<Transform>();
+        firedirection = nosslePos.position - transform.position;
+
+        if (controller.lvl == 2)
         {
             rotating = true; 
         }
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if(rotating)
+        if (rotating)
         {
-
+            if (transform.rotation.z >= maxrotationZ)
+            {
+                increasingRotation = false;
+            }
+            else if (transform.rotation.z <= minrotationZ)
+            {
+                increasingRotation = true;
+            }
+            if(increasingRotation)
+            {
+                transform.Rotate(new Vector3(0, 0, 1), 1);
+            } else
+            {
+                transform.Rotate(new Vector3(0, 0, 1), -1);
+            }
         }
 
         timer += Time.deltaTime;
@@ -45,7 +69,9 @@ public class Source : MonoBehaviour {
     public void shoot()
     {
         GameObject item = Instantiate(blueberry);
-        item.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
+        item.transform.position = new Vector3(nosslePos.position.x, nosslePos.position.y, -5);
+
+        firedirection = nosslePos.position - transform.position;
         item.GetComponent<Rigidbody>().AddForce(firedirection*300);
     }
 }
