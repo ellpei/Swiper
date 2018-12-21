@@ -1,0 +1,1 @@
+{"lvlname":lvl1,"pointsNeeded":10,"timeLimit":40,"bombrate":30}

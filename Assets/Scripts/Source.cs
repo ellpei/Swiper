@@ -7,6 +7,7 @@ using UnityEngine;
 public class Source : MonoBehaviour {
 
     public int timeBetweenShots = 1; //seconds between shots 
+    int bombrate;
     bool rotating = false;
 
     float timer = 0; 
@@ -29,6 +30,8 @@ public class Source : MonoBehaviour {
         controller = GameObject.Find("controller").GetComponent<GameController>();
         nosslePos = GameObject.Find("Nossle").GetComponent<Transform>();
         firedirection = nosslePos.position - transform.position;
+
+        bombrate = controller.lvlinfo.bombrate;
 
         if (controller.lvl == 2)
         {

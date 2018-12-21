@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour {
 
     GameObject mainMenuBtn;
 
-    public int timeCountDown = 30; //time left until lvl ends in seconds
+    public int timeCountDown; //time left until lvl ends in seconds
     float timer;
     string timeString = "Time left: ";
 
@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour {
         playerName.SetActive(false);
 
         gameInfo = GameObject.Find("GameInfo");
-        gameInfo.GetComponent<Text>().text = "You need " + controller.pointsNeeded + " points to pass this level";
+        gameInfo.GetComponent<Text>().text = "You need " + controller.lvlinfo.pointsNeeded + " points to pass this level";
 
         timeText = GameObject.Find("Timer").GetComponent<Text>();
         timeText.text = timeString + timeCountDown;
@@ -55,7 +55,9 @@ public class UIManager : MonoBehaviour {
         pauseObjects = GameObject.FindGameObjectsWithTag("showOnPause");
         hidePaused();
 
-	}
+        timeCountDown = controller.lvlinfo.timeLimit;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

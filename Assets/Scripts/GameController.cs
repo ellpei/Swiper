@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 
 public class GameController : MonoBehaviour {
+
+    public LevelInfo lvlinfo;
+    string lvlinfopath;
 
     public GameObject target;
     public GameObject barrier;
     public int lvl;
-    public int pointsNeeded;
+
 
     private SaveData saveData = new SaveData();
 
@@ -21,7 +24,11 @@ public class GameController : MonoBehaviour {
         target = GameObject.Find("Target");
 
         lvl = (int) char.GetNumericValue(SceneManager.GetActiveScene().name[3]);
-        pointsNeeded = lvl * 10;
+
+        lvlinfopath = "Assets/LvlInfo/lvl" + lvl + ".txt";
+
+        lvlinfo = LoadLevelInfo(lvl);
+
     }
 	
 	// Update is called once per frame
@@ -31,7 +38,7 @@ public class GameController : MonoBehaviour {
 
     public bool PassedLevel(int points)
     {
-        if(pointsNeeded < points)
+        if(lvlinfo.pointsNeeded < points)
         {
             return true;
         } else
@@ -39,5 +46,14 @@ public class GameController : MonoBehaviour {
             return false;
         }
     }
+
+    private LevelInfo LoadLevelInfo(int lvl)
+    {
+        StreamReader streamreader = File.OpenText(lvlinfopath);
+        string jsonString = streamreader.ReadToEnd();
+
+        return JsonUtility.FromJson<LevelInfo>(jsonString);
+    }
+
 
 }
