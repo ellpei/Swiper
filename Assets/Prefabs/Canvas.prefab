@@ -495,7 +495,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Paused
+  m_Text: Game Over :(
 --- !u!114 &114162259143502290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,7 +588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time left:'
+  m_Text: 'Time left: 0'
 --- !u!114 &114241495813142908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -648,7 +648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Score: 1'
 --- !u!114 &114269276301613788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -992,9 +992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0519b6e9d08e94249bd13d160306080f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 1
   lives: 5
-  timeCountDown: 40
+  gameInfo: {fileID: 1100900460999532}
+  timeCountDown: 0
 --- !u!114 &114621185285585482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1628,7 +1629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -136.7}
+  m_AnchoredPosition: {x: 0, y: 55.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224058277054189310

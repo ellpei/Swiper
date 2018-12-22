@@ -20,15 +20,14 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Awake() {
 
-        saveData = saveData.ReadFromFile();
-        target = GameObject.Find("Target");
-
-        lvl = (int) char.GetNumericValue(SceneManager.GetActiveScene().name[3]);
+        lvl = (int)char.GetNumericValue(SceneManager.GetActiveScene().name[3]);
 
         lvlinfopath = "Assets/LvlInfo/lvl" + lvl + ".txt";
-
+       
         lvlinfo = LoadLevelInfo(lvl);
 
+        saveData = saveData.ReadFromFile();
+        target = GameObject.Find("Target");
     }
 	
 	// Update is called once per frame
@@ -38,7 +37,11 @@ public class GameController : MonoBehaviour {
 
     public bool PassedLevel(int points)
     {
-        if(lvlinfo.pointsNeeded < points)
+        if(lvlinfo == null)
+        {
+            return false;
+        }
+        else if(lvlinfo.pointsNeeded < points)
         {
             return true;
         } else
@@ -52,6 +55,7 @@ public class GameController : MonoBehaviour {
         StreamReader streamreader = File.OpenText(lvlinfopath);
         string jsonString = streamreader.ReadToEnd();
 
+        Debug.Log(jsonString);
         return JsonUtility.FromJson<LevelInfo>(jsonString);
     }
 

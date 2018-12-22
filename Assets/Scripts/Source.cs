@@ -31,17 +31,21 @@ public class Source : MonoBehaviour {
         nosslePos = GameObject.Find("Nossle").GetComponent<Transform>();
         firedirection = nosslePos.position - transform.position;
 
-        bombrate = controller.lvlinfo.bombrate;
-
         if (controller.lvl == 2)
         {
             rotating = true; 
         }
 
+        bombrate = -1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(controller != null && controller.lvlinfo != null && bombrate == -1)
+        {
+            bombrate = controller.lvlinfo.bombrate;
+        }
 
         if (rotating)
         {

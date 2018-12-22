@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour {
     Text scoreText;
     Text timeText;
     GameObject pausedText;
-    GameObject gameInfo;
+    public GameObject gameInfo;
     GameObject playerName;
     GameObject pauseBtn;
 
@@ -37,12 +37,10 @@ public class UIManager : MonoBehaviour {
         controller = GameObject.Find("controller").GetComponent<GameController>();
 
         pauseBtn = GameObject.Find("PauseButton");
+        pauseBtn.SetActive(true);
 
         playerName = GameObject.Find("InputField");
         playerName.SetActive(false);
-
-        gameInfo = GameObject.Find("GameInfo");
-        gameInfo.GetComponent<Text>().text = "You need " + controller.lvlinfo.pointsNeeded + " points to pass this level";
 
         timeText = GameObject.Find("Timer").GetComponent<Text>();
         timeText.text = timeString + timeCountDown;
@@ -55,12 +53,33 @@ public class UIManager : MonoBehaviour {
         pauseObjects = GameObject.FindGameObjectsWithTag("showOnPause");
         hidePaused();
 
-        timeCountDown = controller.lvlinfo.timeLimit;
+        gameInfo = GameObject.Find("GameInfo");
 
+        timeCountDown = -1;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if(controller != null && controller.lvlinfo != null)
+        {
+            if(gameInfo == null)
+            {
+                gameInfo = GameObject.Find("GameInfo");
+            }
+
+            if(gameInfo != null)
+            {
+                gameInfo.GetComponent<Text>().text =
+                "You need " +
+                controller.lvlinfo.pointsNeeded +
+                " points to pass this level";
+            }
+            if(timeCountDown == -1)
+            {
+                timeCountDown = controller.lvlinfo.timeLimit;
+            }
+        }
 
         timer += Time.deltaTime;
         if(timer >= 1)
@@ -69,7 +88,7 @@ public class UIManager : MonoBehaviour {
             timeText.text = timeString + timeCountDown;
             timer = 0;
         }
-        if(timeCountDown <= 0)
+        if(timeCountDown <= 0 && controller.lvlinfo != null)
         {
             if(controller.PassedLevel(score))
             {
@@ -89,6 +108,7 @@ public class UIManager : MonoBehaviour {
 
     void LoadNextLevel()
     {
+        Time.timeScale = 0;
         Debug.Log("load next level");
     }
 
@@ -125,7 +145,8 @@ public class UIManager : MonoBehaviour {
                 }
             }
         }
-        Text text = gameInfo.GetComponent<Text>();
+        Text text = gameInfo.GetComponent<Text>() ;
+
         text.text = "High score \n";
         //show highScores 
         for(int i = 0; i < highScores.Length; i++)
@@ -149,13 +170,15 @@ public class UIManager : MonoBehaviour {
         pausedText.SetActive(true);
         pausedText.GetComponent<Text>().text = "Game Over :(";
 
-        gameInfo.SetActive(true);
-        if(playerName != null)
+        if(gameInfo != null)
+        {
+            gameInfo.SetActive(true);
+        }
+        if (playerName != null)
         {
             playerName.SetActive(true);
 
         }
-
         mainMenuBtn.SetActive(true);
     }
 
@@ -167,13 +190,13 @@ public class UIManager : MonoBehaviour {
         {
             Time.timeScale = 0;
             showPaused();
-            pauseBtn.SetActive(true);
+            pauseBtn.SetActive(false);
         }
         else if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
             hidePaused();
-            pauseBtn.SetActive(false);
+            pauseBtn.SetActive(true);
         }
     }
 
